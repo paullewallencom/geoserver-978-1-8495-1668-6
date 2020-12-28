@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Creating a simple map</title>
+        <!-- funziona con il wms senza caching -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            #myMap {
+                clear: both;
+                position: relative;
+                width: 750px;
+                height: 450px;
+                border: 1px solid black;
+            }
+        </style>
+        <script type="text/javascript" src="http://openlayers.org/api/2.12/OpenLayers.js"></script>
+        <script type="text/javascript">
+            function init() {
+                var mapOptions = {
+                    projection: 'EPSG:4326',
+                    maxExtent: new OpenLayers.Bounds(-180.0,-90.0,180.0,90.0),
+                    units: 'degrees'
+                };
+
+                map = new OpenLayers.Map('myMap', mapOptions );
+                demolayer = new OpenLayers.Layer.WMS(
+                    'NaturalEarth:ne_50m_populated_places','../geoserver/NaturalEarth/wms',
+                    {layers: 'NaturalEarth:ne_50m_populated_places',
+                     styles: 'PopulatedPlacesStroke',
+                     format: 'image/png' },
+                    {singleTile: 'True'}
+                );
+                map.addLayer(demolayer);
+                map.zoomTo(4);
+                map.panTo(new OpenLayers.LonLat(12.0,42.0));
+
+            }
+        </script>
+    </head>
+    <body onload="init()">
+    <div id="myMap"></div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Creating a simple map</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            #myMap {
+                clear: both;
+                position: relative;
+                width: 750px;
+                height: 450px;
+                border: 1px solid black;
+            }
+        </style>
+        <script type="text/javascript" src="http://openlayers.org/api/2.12/OpenLayers.js"></script>
+        <script type="text/javascript">
+            function init() {
+                var mapOptions = {
+                    resolutions: [
+                        0.25390625, 0.126953125, 0.0634765625,
+                        0.03173828125, 0.015869140625, 0.0079345703125,
+                        0.00396728515625, 0.001983642578125, 0.0009918212890625,
+                        0.0004959106445312, 0.0002479553222656
+                    ],
+                    projection: 'EPSG:4269',
+                    maxExtent: new OpenLayers.Bounds(-190.0,17.0,-60.0,72.0),
+                    units: 'degrees'
+                };
+                map = new OpenLayers.Map('myMap', mapOptions );
+                demolayer = new OpenLayers.Layer.WMS(
+                    'tiger:tl_2011_us_county','../geoserver/gwc/service/wms',
+                    {layers: 'tiger:tl_2011_us_county',
+                     format: 'image/png' },
+                    //{singleTile: 'True'}
+                    {tileSize: new OpenLayers.Size(256,256)}
+                );
+                map.addLayer(demolayer);
+                map.zoomToExtent(new OpenLayers.Bounds(-190.0,17.0,-60.0,72.0));
+
+            }
+        </script>
+    </head>
+    <body onload="init()">
+    <div id="myMap"></div>
+    </body>
+</html>

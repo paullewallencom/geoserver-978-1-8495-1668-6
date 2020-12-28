@@ -1,0 +1,130 @@
+  <?xml version="1.0" encoding="ISO-8859-1"?>
+  <StyledLayerDescriptor version="1.0.0" 
+    xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd" 
+    xmlns="http://www.opengis.net/sld" 
+    xmlns:ogc="http://www.opengis.net/ogc" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<NamedLayer>
+    <Name>RoadsThematic</Name>
+    <UserStyle>
+      <Title>Geoserver Beginners Guide: Roads thematic map</Title>
+        <FeatureTypeStyle>
+             <Rule>
+                <Name>Interstate</Name>
+                <ogc:Filter>
+                    <ogc:PropertyIsEqualTo>
+                        <ogc:PropertyName>CLASS</ogc:PropertyName>
+                        <ogc:Literal>Interstate</ogc:Literal>
+                    </ogc:PropertyIsEqualTo>
+                </ogc:Filter>                
+               <LineSymbolizer>
+                 <Stroke>
+                   <CssParameter name="stroke">#000000</CssParameter>
+                   <CssParameter name="stroke-width">7</CssParameter>
+                 </Stroke>
+               </LineSymbolizer>
+               <LineSymbolizer>
+                 <Stroke>
+                   <CssParameter name="stroke">#FF0000</CssParameter>
+                   <CssParameter name="stroke-width">5</CssParameter>
+                 </Stroke>
+               </LineSymbolizer>
+               <LineSymbolizer>
+                 <Stroke>
+                   <CssParameter name="stroke">#000000</CssParameter>
+                   <CssParameter name="stroke-width">1</CssParameter>
+                 </Stroke>
+               </LineSymbolizer>
+             </Rule>
+           </FeatureTypeStyle>
+            <FeatureTypeStyle>
+              <Rule>
+                <Name>Federal</Name>
+                <ogc:Filter>
+                  <ogc:PropertyIsEqualTo>
+                    <ogc:PropertyName>CLASS</ogc:PropertyName>
+                    <ogc:Literal>Federal</ogc:Literal>
+                  </ogc:PropertyIsEqualTo>
+                </ogc:Filter>
+               <LineSymbolizer>
+                 <Stroke>
+                   <CssParameter name="stroke">#808080</CssParameter>
+                   <CssParameter name="stroke-width">4</CssParameter>
+                 </Stroke>
+               </LineSymbolizer>
+               <LineSymbolizer>
+                 <Stroke>
+                   <CssParameter name="stroke">#FF7F00</CssParameter>
+                   <CssParameter name="stroke-width">2</CssParameter>
+                 </Stroke>
+               </LineSymbolizer>
+              </Rule>
+            </FeatureTypeStyle>
+            <FeatureTypeStyle>
+              <Rule>
+                <Name>State</Name>
+                <ogc:Filter>
+                  <ogc:PropertyIsEqualTo>
+                    <ogc:PropertyName>CLASS</ogc:PropertyName>
+                    <ogc:Literal>State</ogc:Literal>
+                  </ogc:PropertyIsEqualTo>
+                </ogc:Filter>
+                <LineSymbolizer>
+                  <Stroke>
+                    <CssParameter name="stroke">#000000</CssParameter>
+                    <CssParameter name="stroke-width">4</CssParameter>
+                  </Stroke>
+                </LineSymbolizer>
+                <LineSymbolizer>
+                  <Stroke>
+                    <CssParameter name="stroke">#FFFF00</CssParameter>
+                    <CssParameter name="stroke-width">2</CssParameter>
+                  </Stroke>
+                </LineSymbolizer>
+              </Rule>
+            </FeatureTypeStyle>
+            <FeatureTypeStyle>
+              <Rule>
+                <Name>Other</Name>
+                <ogc:Filter>
+                  <ogc:PropertyIsEqualTo>
+                    <ogc:PropertyName>CLASS</ogc:PropertyName>
+                    <ogc:Literal>Other</ogc:Literal>
+                  </ogc:PropertyIsEqualTo>
+                </ogc:Filter>
+                <LineSymbolizer>
+                  <Stroke>
+                    <CssParameter name="stroke">#808080</CssParameter>
+                    <CssParameter name="stroke-width">4</CssParameter>
+                  </Stroke>
+                </LineSymbolizer>
+                <LineSymbolizer>
+                  <Stroke>
+                    <CssParameter name="stroke">#0000FF</CssParameter>
+                    <CssParameter name="stroke-width">2</CssParameter>
+                  </Stroke>
+                </LineSymbolizer>
+              </Rule>
+            </FeatureTypeStyle>
+            <FeatureTypeStyle>
+              <Rule>
+                <Name>Under Construction</Name>
+                <ogc:Filter>
+                  <ogc:PropertyIsEqualTo>
+                    <ogc:PropertyName>CLASS</ogc:PropertyName>
+                    <ogc:Literal>U/C</ogc:Literal>
+                  </ogc:PropertyIsEqualTo>
+                </ogc:Filter>
+                <LineSymbolizer>
+                  <Stroke>
+                    <CssParameter name="stroke-dasharray">15 10</CssParameter>
+                    <CssParameter name="stroke">#808080</CssParameter>
+                    <CssParameter name="stroke-width">4</CssParameter>
+                  </Stroke>
+                </LineSymbolizer>
+              </Rule>
+            </FeatureTypeStyle>
+        </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>           

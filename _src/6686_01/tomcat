@@ -1,0 +1,35 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          tomcat
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start/Stop/Restart Tomcat  v7.0.27
+### END INIT INFO
+#
+#  /etc/init.d/tomcat
+#
+export JAVA_HOME=/usr/lib/jvm/jre1.6.0_37
+export PATH=$JAVA_HOME/bin:$PATH
+export CATALINA_HOME=/opt/apache-tomcat-7.0.27
+export JAVA_OPTS="-Djava.awt.headless=true"
+
+case $1 in
+    start)
+        sh $CATALINA_HOME/bin/startup.sh
+    ;;
+    stop)
+        sh $CATALINA_HOME/bin/shutdown.sh
+    ;;
+    restart)
+        sh $CATALINA_HOME/bin/shutdown.sh
+        sh $CATALINA_HOME/bin/startup.sh
+    ;;
+    *)
+        echo "Usage: /etc/init.d/tomcat {start|stop|restart}"
+        exit 1
+    ;;
+esac
+
+exit 0

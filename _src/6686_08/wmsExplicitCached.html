@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Creating a simple map for cached layers</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            #myMap {
+                clear: both;
+                position: relative;
+                width: 750px;
+                height: 450px;
+                border: 1px solid black;
+            }
+        </style>
+        <script type="text/javascript" src="http://openlayers.org/api/2.12/OpenLayers.js"></script>
+        <script type="text/javascript">
+            function init() {
+                var mapOptions = {
+                    resolutions: [
+                        0.703125, 0.3515625, 0.17578125,
+                        0.087890625, 0.0439453125, 0.02197265625,
+                        0.010986328125, 0.0054931640625, 0.00274658203125,
+                        0.001373291015625, 0.0006866455078125, 0.0003433227539062,
+                        0.0001716613769531, 0.0000858306884766, 0.0000429153442383,
+                        0.0000214576721191, 0.0000107288360596, 0.0000053644180298,
+                        0.0000026822090149, 0.0000013411045074, 0.0000006705522537,
+                        0.0000003352761269
+                    ],
+                    projection: 'EPSG:4326',
+                    maxExtent: new OpenLayers.Bounds(-180.0,-90.0,180.0,90.0),
+                    units: 'degrees'
+                };
+                map = new OpenLayers.Map('myMap', mapOptions );
+                demolayer = new OpenLayers.Layer.WMS(
+                    'NaturalEarth:ne_50m_populated_places',
+                    '../geoserver/gwc/service/wms',
+                    {layers: 'NaturalEarth:ne_50m_populated_places',
+                     styles: 'PopulatedPlacesStroke',
+                     format: 'image/png' },
+                    {tileSize: new OpenLayers.Size(256,256)}
+                );
+                map.addLayer(demolayer);
+                map.zoomTo(4);
+                map.panTo(new OpenLayers.LonLat(12.0,42.0));
+
+            }
+        </script>
+    </head>
+    <body onload="init()">
+    <div id="myMap"></div>
+    </body>
+</html>
